@@ -1,0 +1,226 @@
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+import { Star, Quote, Calendar, MapPin, Users } from 'lucide-react';
+import './Reviews.css';
+
+const Reviews: React.FC = () => {
+  const [selectedRating, setSelectedRating] = useState<number | null>(null);
+
+  const reviews = [
+    {
+      id: 1,
+      name: 'Sarah Johnson',
+      location: 'New York, NY',
+      rating: 5,
+      date: 'March 2024',
+      text: 'Absolutely stunning views and the most comfortable bed I\'ve ever slept in. The staff was incredibly friendly and the breakfast was delicious. Will definitely return!',
+      image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'
+    },
+    {
+      id: 2,
+      name: 'Michael Chen',
+      location: 'Los Angeles, CA',
+      rating: 5,
+      date: 'February 2024',
+      text: 'Perfect location for exploring the desert. The breakfast was amazing and the rooms were spotless. The sunset views from our balcony were breathtaking.',
+      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'
+    },
+    {
+      id: 3,
+      name: 'Emily Rodriguez',
+      location: 'Phoenix, AZ',
+      rating: 5,
+      date: 'January 2024',
+      text: 'We loved our stay! The sunset views from our balcony were breathtaking. The staff went above and beyond to make our anniversary special. Highly recommend!',
+      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'
+    },
+    {
+      id: 4,
+      name: 'David Thompson',
+      location: 'Seattle, WA',
+      rating: 5,
+      date: 'December 2023',
+      text: 'The desert views are absolutely spectacular. The room was immaculate and the service was top-notch. Can\'t wait to come back!',
+      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'
+    },
+    {
+      id: 5,
+      name: 'Lisa Wang',
+      location: 'San Francisco, CA',
+      rating: 5,
+      date: 'November 2023',
+      text: 'What a magical place! The stargazing deck was incredible and the staff was so welcoming. The local art throughout the property added such a special touch.',
+      image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'
+    },
+    {
+      id: 6,
+      name: 'Robert Martinez',
+      location: 'Denver, CO',
+      rating: 5,
+      date: 'October 2023',
+      text: 'The perfect desert getaway. The pool was refreshing, the food was delicious, and the views were unforgettable. Already planning our next visit!',
+      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'
+    }
+  ];
+
+  const stats = [
+    { icon: <Star size={24} />, number: '4.8/5', label: 'Average Rating' },
+    { icon: <Users size={24} />, number: '500+', label: 'Happy Guests' },
+    { icon: <Calendar size={24} />, number: '25+', label: 'Years of Excellence' },
+    { icon: <MapPin size={24} />, number: '98%', label: 'Would Recommend' },
+  ];
+
+  const filteredReviews = selectedRating 
+    ? reviews.filter(review => review.rating === selectedRating)
+    : reviews;
+
+  return (
+    <div className="reviews">
+      {/* Hero Section */}
+      <section className="reviews-hero">
+        <div className="reviews-hero-background">
+          <div className="reviews-hero-overlay"></div>
+        </div>
+        <div className="container">
+          <motion.div
+            className="reviews-hero-content"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h1>Guest Reviews</h1>
+            <p>Hear from our guests about their experiences at High Desert Inn.</p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="section stats-section">
+        <div className="container">
+          <motion.div
+            className="stats-grid"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            {stats.map((stat, index) => (
+              <motion.div
+                key={index}
+                className="stat-card"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ y: -5 }}
+              >
+                <div className="stat-icon">
+                  {stat.icon}
+                </div>
+                <h3>{stat.number}</h3>
+                <p>{stat.label}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Filter Section */}
+      <section className="section filter-section">
+        <div className="container">
+          <motion.div
+            className="filter-content"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2>Filter Reviews</h2>
+            <div className="rating-filters">
+              {[5, 4, 3, 2, 1].map((rating) => (
+                <motion.button
+                  key={rating}
+                  className={`rating-filter ${selectedRating === rating ? 'active' : ''}`}
+                  onClick={() => setSelectedRating(selectedRating === rating ? null : rating)}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {[...Array(rating)].map((_, i) => (
+                    <Star key={i} size={16} fill="currentColor" />
+                  ))}
+                  <span>{rating} Stars</span>
+                </motion.button>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Reviews Grid */}
+      <section className="section reviews-grid-section">
+        <div className="container">
+          <motion.div
+            className="reviews-grid"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            {filteredReviews.map((review, index) => (
+              <motion.div
+                key={review.id}
+                className="review-card"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ y: -10 }}
+              >
+                <div className="review-header">
+                  <div className="review-author">
+                    <img src={review.image} alt={review.name} />
+                    <div>
+                      <h4>{review.name}</h4>
+                      <p>{review.location}</p>
+                    </div>
+                  </div>
+                  <div className="review-rating">
+                    {[...Array(review.rating)].map((_, i) => (
+                      <Star key={i} size={16} fill="currentColor" />
+                    ))}
+                  </div>
+                </div>
+                <div className="review-content">
+                  <Quote size={20} className="quote-icon" />
+                  <p>{review.text}</p>
+                </div>
+                <div className="review-footer">
+                  <span>{review.date}</span>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="section cta-section">
+        <div className="container">
+          <motion.div
+            className="cta-content"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2>Share Your Experience</h2>
+            <p>We'd love to hear about your stay at High Desert Inn. Your feedback helps us continue providing exceptional service.</p>
+            <motion.button
+              className="btn btn-primary"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              Write a Review
+            </motion.button>
+          </motion.div>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Reviews; 

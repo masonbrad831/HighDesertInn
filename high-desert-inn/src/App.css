@@ -1,0 +1,43 @@
+.App {
+  text-align: left;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Ensure proper spacing for fixed navbar */
+main {
+  padding-top: 80px;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Ensure proper z-index stacking */
+.navbar {
+  z-index: 1000;
+}
+
+/* Loading states */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}
+
+/* Error states */
+.error {
+  color: #dc2626;
+  text-align: center;
+  padding: 2rem;
+}
+
+/* Success states */
+.success {
+  color: #059669;
+  text-align: center;
+  padding: 2rem;
+}
