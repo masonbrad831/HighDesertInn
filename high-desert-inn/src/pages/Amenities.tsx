@@ -16,7 +16,7 @@ const Amenities: React.FC = () => {
       category: 'Dining',
       items: [
         { icon: <Coffee size={24} />, name: 'Complimentary Breakfast', description: 'Fresh local ingredients served daily' },
-        { icon: <Utensils size={24} />, name: 'On-Site Restaurant', description: 'Desert-inspired cuisine with local flavors' },
+        { icon: <Utensils size={24} />, name: 'Nearby Restaurants', description: 'Desert-inspired cuisine with local flavors' },
       ]
     },
     {

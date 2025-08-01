@@ -21,8 +21,7 @@ const Footer: React.FC = () => {
               <h3>High Desert Inn</h3>
               <p>Where Comfort Meets Adventure</p>
               <p className="footer-description">
-                Experience the perfect blend of luxury and nature in the heart of the desert. 
-                Your gateway to unforgettable memories and breathtaking landscapes.
+              Experience the perfect blend of cozy luxury and the stunning natural beauty of Salina, Utah. Your gateway to memorable moments and breathtaking landscapes in the heart of scenic Utah.
               </p>
             </motion.div>
           </div>
@@ -67,61 +66,20 @@ const Footer: React.FC = () => {
             >
               <div className="contact-item">
                 <MapPin size={16} />
-                <span>123 Desert Valley Road<br />Desert Valley, CA 92345</span>
+                <span>60 North State Street<br />Salina, UT 84654</span>
               </div>
               <div className="contact-item">
                 <Phone size={16} />
-                <span>(555) 123-4567</span>
+                <span>(435) 529-2120</span>
               </div>
               <div className="contact-item">
                 <Mail size={16} />
-                <span>info@highdesertinn.com</span>
+                <span><a href="mailto:info@highdesertinn.com">info@highdesertinn.com</a></span>
               </div>
               <div className="contact-item">
                 <Clock size={16} />
                 <span>Check-in: 3:00 PM<br />Check-out: 11:00 AM</span>
               </div>
-            </motion.div>
-          </div>
-
-          <div className="footer-section">
-            <motion.h4
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-            >
-              Follow Us
-            </motion.h4>
-            <motion.div
-              className="social-links"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-            >
-              <motion.a
-                href="#"
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="social-link"
-              >
-                <Facebook size={20} />
-              </motion.a>
-              <motion.a
-                href="#"
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="social-link"
-              >
-                <Instagram size={20} />
-              </motion.a>
-              <motion.a
-                href="#"
-                whileHover={{ scale: 1.1, y: -2 }}
-                whileTap={{ scale: 0.95 }}
-                className="social-link"
-              >
-                <Twitter size={20} />
-              </motion.a>
             </motion.div>
           </div>
         </div>
@@ -133,7 +91,7 @@ const Footer: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.7 }}
         >
           <div className="footer-bottom-content">
-            <p>&copy; {currentYear} High Desert Inn. All rights reserved.</p>
+            <p>©2023 by Bradford Lodging, LLC.</p>
             <div className="footer-bottom-links">
               <Link to="/privacy">Privacy Policy</Link>
               <Link to="/terms">Terms of Service</Link>

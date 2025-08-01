@@ -1,52 +1,31 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Heart, Award, Users, MapPin, Calendar, Star } from 'lucide-react';
+import { Heart, Award, Users, MapPin, Home, Calendar, Star, HandHelping, Sparkles } from 'lucide-react';
 import './About.css';
 
 const About: React.FC = () => {
   const stats = [
-    { icon: <Calendar size={24} />, number: '25+', label: 'Years of Excellence' },
-    { icon: <Users size={24} />, number: '10,000+', label: 'Happy Guests' },
-    { icon: <Award size={24} />, number: '15+', label: 'Industry Awards' },
-    { icon: <Star size={24} />, number: '4.8/5', label: 'Guest Rating' },
+    { icon: <Home size={24} />, number: 'Family-Owned', label: 'Locally Operated with Care' },
+    { icon: <Users size={24} />, number: 'Clean & Comfy', label: 'A Standard You Can See and Feel' },
+    { icon: <HandHelping  size={24} />, number: '4.8/5', label: 'Rated by Our Visitors' },
+    { icon: <MapPin size={24} />, number: 'Salina, Utah', label: 'Proudly Serving Our Community' },
   ];
 
   const values = [
     {
-      title: 'Authentic Experience',
-      description: 'We believe in providing genuine desert hospitality that connects guests with the natural beauty and culture of our region.',
+      title: 'Genuine Hospitality',
+      description: 'We treat every guest like family, offering a warm welcome and personalized care you won’t find at big chains.',
       icon: <Heart size={24} />
     },
     {
-      title: 'Sustainable Luxury',
-      description: 'Our commitment to environmental responsibility ensures that luxury and sustainability go hand in hand.',
-      icon: <Award size={24} />
+      title: 'Clean & Comfortable',
+      description: 'Our rooms are known for their exceptional cleanliness and cozy comfort — because a good night’s rest matters.',
+      icon: <Sparkles size={24} />
     },
     {
-      title: 'Community Connection',
-      description: 'We actively support and collaborate with local businesses and communities to enrich the guest experience.',
-      icon: <Users size={24} />
-    }
-  ];
-
-  const team = [
-    {
-      name: 'Sarah Martinez',
-      position: 'General Manager',
-      image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
-      description: 'With over 15 years in hospitality, Sarah ensures every guest receives exceptional service.'
-    },
-    {
-      name: 'Michael Chen',
-      position: 'Head of Operations',
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
-      description: 'Michael oversees all daily operations to maintain our high standards of excellence.'
-    },
-    {
-      name: 'Emily Rodriguez',
-      position: 'Guest Relations Manager',
-      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80',
-      description: 'Emily creates memorable experiences and ensures every guest feels at home.'
+      title: 'Locally Rooted',
+      description: 'We take pride in our Salina roots and work with local shops, diners, and events to create a truly local stay.',
+      icon: <MapPin size={24} />
     }
   ];
 
@@ -82,13 +61,22 @@ const About: React.FC = () => {
             >
               <h2>A Legacy of Desert Hospitality</h2>
               <p>
-                Founded in 1998, High Desert Inn began as a small family-owned establishment with a simple mission: to provide travelers with an authentic desert experience that combines comfort, luxury, and the breathtaking beauty of the desert landscape.
+              Traveling can be an exhausting experience. Enter the High Desert Inn, where comfort and hospitality meet.
+               Our commitment to service is incomparable and our rates are unmatched. Take a look at our site to find out 
+               more about our facility.  We are a small family owned hotel dedicated to provide clean rooms, great service 
+               and a level of hospitality that is becoming hard to find.
               </p>
               <p>
-                What started as a modest 12-room inn has grown into a beloved destination that welcomes guests from around the world. Our commitment to personalized service and attention to detail has remained unchanged throughout our journey.
+              Since we are independently owned and operated we 
+               don't have to charge commission fees on each room rented, which allows us to pass on that 10% savings to you, 
+               our guest.  Here you will find the cleanest and most comfortable rooms around.
               </p>
               <p>
-                Today, we continue to honor our roots while embracing modern amenities and sustainable practices. Every room, every meal, and every interaction is designed to create lasting memories and a deep connection to the desert's natural wonders.
+              If you find something you need, our front desk is available 24 hours a day,  
+              We pride ourselves in being the friendliest lodging you will find.  Read our reviews, written by the folks who have stayed here and see the impact we have made on our guests.
+              </p>
+              <p>
+              Can’t find what you’re looking for? Give us a call! ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀ (435) 529-2120
               </p>
             </motion.div>
             <motion.div
@@ -97,7 +85,7 @@ const About: React.FC = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="High Desert Inn History" />
+              <img src="https://h-img1.cloudbeds.com/uploads/309508/pxl_20230703_0320400752_gallery~~658705c63868a.jpg" alt="High Desert Inn History" />
             </motion.div>
           </div>
         </div>
@@ -165,41 +153,6 @@ const About: React.FC = () => {
         </div>
       </section>
 
-      {/* Team Section */}
-      <section className="section team-section">
-        <div className="container">
-          <motion.div
-            className="section-title"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2>Meet Our Team</h2>
-            <p>The dedicated professionals who make High Desert Inn a truly special place.</p>
-          </motion.div>
-          <div className="team-grid">
-            {team.map((member, index) => (
-              <motion.div
-                key={index}
-                className="team-card"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                whileHover={{ y: -10 }}
-              >
-                <div className="team-image">
-                  <img src={member.image} alt={member.name} />
-                </div>
-                <div className="team-content">
-                  <h3>{member.name}</h3>
-                  <p className="team-position">{member.position}</p>
-                  <p className="team-description">{member.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Location Section */}
       <section className="section location-section">
@@ -213,20 +166,19 @@ const About: React.FC = () => {
             >
               <h2>Perfectly Located</h2>
               <p>
-                Nestled in the heart of the desert, High Desert Inn offers the perfect balance of seclusion and accessibility. Our location provides easy access to all the area's attractions while maintaining the peaceful atmosphere that makes our property special.
-              </p>
+              Tucked away in scenic Salina, High Desert Inn offers a peaceful place to rest while keeping you close to everything you need. Whether you're here for outdoor adventures or just passing through, our location makes it easy.              </p>
               <div className="location-features">
                 <div className="location-feature">
                   <MapPin size={20} />
-                  <span>Minutes from hiking trails and scenic viewpoints</span>
+                  <span>Just minutes from hiking trails and desert views</span>
                 </div>
                 <div className="location-feature">
                   <MapPin size={20} />
-                  <span>Close to local restaurants and shopping</span>
+                  <span>Nearby local diners, shops, and gas stations</span>
                 </div>
                 <div className="location-feature">
                   <MapPin size={20} />
-                  <span>Easy access to major highways and airports</span>
+                  <span>Quick access to I‑70 and major routes</span>
                 </div>
               </div>
             </motion.div>
@@ -236,7 +188,7 @@ const About: React.FC = () => {
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Desert Location" />
+              <img src="https://i.ytimg.com/vi/lUffIAeXcqQ/maxresdefault.jpg" alt="Desert Location" />
             </motion.div>
           </div>
         </div>

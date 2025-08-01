@@ -6,87 +6,99 @@ import './Attractions.css';
 const Attractions: React.FC = () => {
   const attractions = [
     {
-      name: 'Desert Vista Point',
-      description: 'Breathtaking panoramic views of the entire desert valley. Perfect for sunrise and sunset photography.',
-      distance: '5 minutes',
+      name: 'Sevier Valley Coffee Co.',
+      description: 'Located right next door to the hotel. Quite possibly the best coffee products in the state.  Wonderful people.',
+      distance: '1 minute',
+      duration: '',
+      cost: '',
+      rating: 4.8,
+      image: 'https://b8aab2f4f459ff7a2030.cdn6.editmysite.com/uploads/b/b8aab2f4f459ff7a203036d7c831cf4d7d302486d4894cf306ca05893fda1a4e/Untitled%20design%20%283%29_1736445791.png?width=2400&optimize=medium',
+      features: ['Breakfast', 'Coffee', 'Gift Shop', 'Souvenirs']
+    },
+    {
+      name: "Mom's Cafe",
+      description: "Mom's Cafe Great homestyle dining.  Breakfast, Lunch and Dinner.",
+      distance: '1 minute',
       duration: '1-2 hours',
-      cost: 'Free',
-      rating: 5,
-      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      features: ['Photography', 'Sunset Views', 'Hiking Trails']
-    },
-    {
-      name: 'Cactus Garden Trail',
-      description: 'Explore the diverse desert flora on this guided walking trail through native cactus gardens.',
-      distance: '10 minutes',
-      duration: '2-3 hours',
-      cost: '$15',
+      cost: '',
       rating: 4,
-      image: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      features: ['Guided Tours', 'Native Plants', 'Educational']
+      image: 'https://live.staticflickr.com/2207/2146928808_c02356095d_b.jpg',
+      features: ['Great Food', 'Home Style Cooking', 'Great Service']
     },
     {
-      name: 'Stargazing Observatory',
-      description: 'Experience the clearest night skies in the region with our state-of-the-art observatory.',
-      distance: '15 minutes',
-      duration: '2-4 hours',
-      cost: '$25',
-      rating: 5,
-      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      features: ['Telescopes', 'Expert Guides', 'Dark Sky']
+      name: 'The Hot Spot',
+      description: 'Old fashioned fast food.  Burgers, shakes and fries and a ton of other great things on the menu',
+      distance: '1 minutes',
+      duration: '30 minutes',
+      cost: '',
+      rating: 4,
+      image: 'https://www.utahsadventurefamily.com/wp-content/uploads/2018/05/The-Hot-Spot-5-scaled.jpg',
+      features: ['Great Food', 'Fast Food', 'Great Service']
     },
     {
-      name: 'Desert Adventure Tours',
-      description: 'Thrilling off-road adventures through the desert landscape with experienced guides.',
-      distance: '20 minutes',
+      name: 'Eyes to the Sky Balloon Festival',
+      description: (
+        <>
+          A world class hot air balloon event June 20th - 22th 2025{' '}
+          <a
+            href="https://eyestotheskyballoonfestival.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: '#0077cc', textDecoration: 'underline' }}
+          >
+            eyestotheskyballoonfestival.com
+          </a>
+        </>
+      ),
+      distance: '1 minute',
       duration: '3-4 hours',
-      cost: '$75',
-      rating: 5,
-      image: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      features: ['Off-Road', 'Adventure', 'Guided']
-    },
-    {
-      name: 'Local Art Gallery',
-      description: 'Discover works from talented local artists inspired by the desert landscape.',
-      distance: '8 minutes',
-      duration: '1-2 hours',
-      cost: 'Free',
+      cost: '',
       rating: 4,
-      image: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      features: ['Local Art', 'Cultural', 'Free Entry']
+      image: 'https://i0.wp.com/wolfharttimages.com/wp-content/uploads/2021/04/Salina-06.jpg?resize=1024%2C683&ssl=1',
+      features: ['Fun', 'Family', 'Food', 'Music']
     },
     {
-      name: 'Desert Spa & Wellness',
-      description: 'Rejuvenate with desert-inspired spa treatments and wellness activities.',
-      distance: '12 minutes',
-      duration: '2-3 hours',
-      cost: '$120',
+      name: "Miss Mary's Historical Museum",
+      description: 'Historical museum of Salina, and surrounding area.',
+      distance: '1 minute',
+      duration: '',
+      cost: 'Free',
       rating: 5,
-      image: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      features: ['Spa Treatments', 'Wellness', 'Relaxation']
+      image: 'https://nowplayingutah.com/wp-content/uploads/sites/nowplayingutah.com/images/venue/65415/missmaryshistoricalmuseum_venueimage.jpg',
+      features: ['History', 'Cultural', 'Free Entry']
+    },
+    {
+      name: 'Blackhawk Arena',
+      description: 'Home to regional equestrian events, concerts, and activities.',
+      distance: '3 minutes',
+      duration: '',
+      cost: '',
+      rating: 5,
+      image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUT7tu5Vc08OpGedkHK7FIAjkZY_xp8gOe2Q&s',
+      features: ['', 'Wellness', 'Relaxation']
     }
   ];
 
   const activities = [
     {
-      title: 'Hiking & Trails',
-      description: 'Explore miles of scenic hiking trails with varying difficulty levels.',
+      title: 'Hiking & Nature Walks',
+      description: 'Enjoy peaceful hikes at nearby Blackhawk Mountain or explore the Gooseberry Trail for forest views and fresh mountain air.',
       icon: <Mountain size={24} />
     },
     {
-      title: 'Photography Tours',
-      description: 'Capture the stunning desert landscape with professional photography guidance.',
+      title: 'Historic Main Street',
+      description: 'Stroll through downtown Salina’s historic Main Street, grab a bite at Mom’s Café, and experience the charm of a classic Utah town.',
       icon: <Camera size={24} />
     },
     {
-      title: 'Wildlife Watching',
-      description: 'Observe native desert wildlife in their natural habitat.',
+      title: 'ATV & Off-Roading Trails',
+      description: 'Ride through the scenic Fishlake National Forest or hit the famous Arapeen Trail System right from town.',
       icon: <TreePine size={24} />
     },
     {
-      title: 'Sunset Viewing',
-      description: 'Experience the magical desert sunsets from our designated viewing areas.',
-      icon: <Sun size={24} />
+      title: 'Big Rock Candy Mountain',
+      description: 'take a short drive to the colorful canyons of Big Rock Candy Mountain.',
+      icon: <Mountain size={24} />
     }
   ];
 
@@ -104,8 +116,8 @@ const Attractions: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1>Desert Attractions</h1>
-            <p>Discover the natural wonders and exciting activities that surround High Desert Inn.</p>
+            <h1>Local Attractions</h1>
+            <p>Discover the hidden gems, scenic landscapes, and unforgettable experiences surrounding High Desert Inn in Salina, Utah.</p>
           </motion.div>
         </div>
       </section>
@@ -120,7 +132,7 @@ const Attractions: React.FC = () => {
             transition={{ duration: 0.6 }}
           >
             <h2>Popular Activities</h2>
-            <p>From adventure to relaxation, there's something for everyone in the desert.</p>
+            <p>From outdoor adventures to small-town charm, there's something for everyone in Salina, Utah.</p>
           </motion.div>
           
           <div className="activities-grid">
@@ -170,7 +182,7 @@ const Attractions: React.FC = () => {
                 <div className="attraction-image">
                   <img src={attraction.image} alt={attraction.name} />
                   <div className="attraction-rating">
-                    {[...Array(attraction.rating)].map((_, i) => (
+                    {[...Array(Math.floor(attraction.rating))].map((_, i) => (
                       <Star key={i} size={16} fill="currentColor" />
                     ))}
                   </div>
@@ -184,14 +196,18 @@ const Attractions: React.FC = () => {
                       <MapPin size={16} />
                       <span>{attraction.distance}</span>
                     </div>
-                    <div className="detail-item">
-                      <Clock size={16} />
-                      <span>{attraction.duration}</span>
+                    {attraction.duration?.trim() && (
+                      <div className="detail-item">
+                        <Clock size={16} />
+                        <span>{attraction.duration}</span>
                     </div>
-                    <div className="detail-item">
-                      <DollarSign size={16} />
-                      <span>{attraction.cost}</span>
-                    </div>
+                    )}
+                    {attraction.cost?.trim() && (
+                      <div className="detail-item">
+                        <DollarSign size={16} />
+                        <span>{attraction.cost}</span>
+                      </div>
+                    )}
                   </div>
                   
                   <div className="attraction-features">
@@ -216,14 +232,6 @@ const Attractions: React.FC = () => {
             transition={{ duration: 0.6 }}
           >
             <h2>Plan Your Adventure</h2>
-            <p>Our concierge team can help you plan the perfect desert adventure. Contact us to arrange tours, transportation, and reservations.</p>
-            <motion.button
-              className="btn btn-primary"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Contact Concierge
-            </motion.button>
           </motion.div>
         </div>
       </section>

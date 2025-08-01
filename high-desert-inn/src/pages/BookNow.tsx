@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, Users, MapPin, Star, Check, ArrowRight } from 'lucide-react';
 import './BookNow.css';
@@ -8,6 +8,24 @@ const BookNow: React.FC = () => {
   const [checkIn, setCheckIn] = useState<string>('');
   const [checkOut, setCheckOut] = useState<string>('');
   const [guests, setGuests] = useState<number>(1);
+
+  // Set default dates to current day and next day (Mountain Time)
+  useEffect(() => {
+    const now = new Date();
+    const mountainTime = new Date(now.toLocaleString("en-US", {timeZone: "America/Denver"}));
+    
+    // Check-in date (today)
+    const checkInDate = new Date(mountainTime);
+    const checkInFormatted = checkInDate.toISOString().split('T')[0];
+    
+    // Check-out date (tomorrow)
+    const checkOutDate = new Date(mountainTime);
+    checkOutDate.setDate(checkOutDate.getDate() + 1);
+    const checkOutFormatted = checkOutDate.toISOString().split('T')[0];
+    
+    setCheckIn(checkInFormatted);
+    setCheckOut(checkOutFormatted);
+  }, []);
 
   const rooms = [
     {
@@ -44,17 +62,25 @@ const BookNow: React.FC = () => {
 
   const amenities = [
     'Free High-Speed WiFi',
-    'Complimentary Breakfast',
     'Free Parking',
-    'Swimming Pool',
     '24/7 Front Desk',
+    "High Security Parking",
+    "Clean Rooms",
     'Room Service'
   ];
 
   const handleBooking = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle booking logic here
-    console.log('Booking submitted:', { selectedRoom, checkIn, checkOut, guests });
+    
+    // Format dates for Cloudbeds URL
+    const checkInFormatted = checkIn.replace(/-/g, '');
+    const checkOutFormatted = checkOut.replace(/-/g, '');
+    
+    // Construct Cloudbeds URL with dates
+    const cloudbedsUrl = `https://hotels.cloudbeds.com/en/reservation/WIJcrQ#checkin=${checkIn}&checkout=${checkOut}`;
+    
+    // Redirect to Cloudbeds booking page
+    window.open(cloudbedsUrl, '_blank');
   };
 
   return (
@@ -92,58 +118,55 @@ const BookNow: React.FC = () => {
                 <div className="form-row">
                   <div className="form-group">
                     <label htmlFor="check-in">Check-in Date</label>
-                    <div className="input-with-icon">
-                      <Calendar size={20} />
+                    <div style={{ position: 'relative', display: 'inline-flex', alignItems: 'center' }}>
+                      <Calendar
+                        size={20}
+                        style={{
+                          position: 'absolute',
+                          left: 10,
+                          pointerEvents: 'none',
+                          color: '#666'
+                        }}
+                      />
                       <input
                         type="date"
                         id="check-in"
                         value={checkIn}
                         onChange={(e) => setCheckIn(e.target.value)}
                         required
+                        style={{
+                          paddingLeft: 36,
+                          height: '2.5rem',
+                          width: '100%',
+                          boxSizing: 'border-box'
+                        }}
                       />
                     </div>
                   </div>
                   <div className="form-group">
                     <label htmlFor="check-out">Check-out Date</label>
-                    <div className="input-with-icon">
-                      <Calendar size={20} />
+                    <div style={{ position: 'relative', display: 'inline-flex', alignItems: 'center' }}>
+                      <Calendar
+                        size={20}
+                        style={{
+                          position: 'absolute',
+                          left: 10,
+                          pointerEvents: 'none',
+                          color: '#666'
+                        }}
+                      />
                       <input
                         type="date"
                         id="check-out"
                         value={checkOut}
                         onChange={(e) => setCheckOut(e.target.value)}
                         required
-                      />
-                    </div>
-                  </div>
-                </div>
-                
-                <div className="form-row">
-                  <div className="form-group">
-                    <label htmlFor="guests">Number of Guests</label>
-                    <div className="input-with-icon">
-                      <Users size={20} />
-                      <select
-                        id="guests"
-                        value={guests}
-                        onChange={(e) => setGuests(Number(e.target.value))}
-                        required
-                      >
-                        {[1, 2, 3, 4, 5, 6].map(num => (
-                          <option key={num} value={num}>{num} Guest{num > 1 ? 's' : ''}</option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
-                  <div className="form-group">
-                    <label htmlFor="location">Location</label>
-                    <div className="input-with-icon">
-                      <MapPin size={20} />
-                      <input
-                        type="text"
-                        id="location"
-                        value="Desert Valley, CA"
-                        readOnly
+                        style={{
+                          paddingLeft: 36,
+                          height: '2.5rem',
+                          width: '100%',
+                          boxSizing: 'border-box'
+                        }}
                       />
                     </div>
                   </div>
@@ -189,15 +212,15 @@ const BookNow: React.FC = () => {
 
               <div className="contact-info">
                 <h4>Need Help?</h4>
-                <p>Call us at (555) 123-4567</p>
-                <p>Email: bookings@highdesertinn.com</p>
+                <p>Call us at +1 (435) 529-2120</p>
+                <p>Email: info@highdesertinns.com</p>
               </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Room Selection Section */}
+      {/*
       <section className="section rooms-section">
         <div className="container">
           <motion.div
@@ -245,6 +268,7 @@ const BookNow: React.FC = () => {
           </div>
         </div>
       </section>
+      */}
 
       {/* Amenities Section */}
       <section className="section amenities-section">

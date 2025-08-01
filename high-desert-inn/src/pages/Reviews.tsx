@@ -213,7 +213,8 @@ const Reviews: React.FC = () => {
               className="btn btn-primary"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-            >
+              onClick={() => window.open('https://search.google.com/local/writereview?placeid=ChIJEwz3fzB3S4cR5EalsgW7Sik', '_blank')}
+              >
               Write a Review
             </motion.button>
           </motion.div>

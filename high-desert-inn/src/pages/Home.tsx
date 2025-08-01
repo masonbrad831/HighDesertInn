@@ -5,43 +5,68 @@ import { Star, ArrowRight, Calendar, Users, MapPin, Wifi, Coffee, Car } from 'lu
 import './Home.css';
 
 const Home: React.FC = () => {
+  const handleDirectBooking = () => {
+    // Get current dates in Mountain Time
+    const now = new Date();
+    const mountainTime = new Date(now.toLocaleString("en-US", {timeZone: "America/Denver"}));
+    
+    // Check-in date (today)
+    const checkInDate = new Date(mountainTime);
+    const checkIn = checkInDate.toISOString().split('T')[0];
+    
+    // Check-out date (tomorrow)
+    const checkOutDate = new Date(mountainTime);
+    checkOutDate.setDate(checkOutDate.getDate() + 1);
+    const checkOut = checkOutDate.toISOString().split('T')[0];
+    
+    // Redirect to Cloudbeds with current dates
+    const cloudbedsUrl = `https://hotels.cloudbeds.com/en/reservation/WIJcrQ#checkin=${checkIn}&checkout=${checkOut}`;
+    window.open(cloudbedsUrl, '_blank');
+  };
+
   const featuredAmenities = [
     { icon: <Wifi size={24} />, title: 'Free WiFi', description: 'High-speed internet throughout the property' },
-    { icon: <Coffee size={24} />, title: 'Complimentary Breakfast', description: 'Fresh local ingredients every morning' },
-    { icon: <Car size={24} />, title: 'Free Parking', description: 'Secure parking for all guests' },
-    { icon: <MapPin size={24} />, title: 'Prime Location', description: 'Minutes from desert attractions' },
+    { icon: <Coffee size={24} />, title: 'Picnic area', description: 'Enjoy a picnic area with a grill and covered seating' },
+    { icon: <Car size={24} />, title: 'Free Parking', description: 'Secure parking with 24/7 surveillance for all guests' }
   ];
 
   const roomTypes = [
     {
-      name: 'Desert View Suite',
-      description: 'Spacious suite with panoramic desert views',
-      price: '$189',
-      image: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      features: ['King Bed', 'Desert View', 'Private Balcony', 'Mini Kitchen']
+      name: 'Standard King Room',
+      description: '',
+      price: '',
+      image: 'https://h-img1.cloudbeds.com/uploads/309508/pxl_20231227_201445128_featured~~658d7e7c57a1e.jpg',
+      features: ['King Bed']
     },
     {
-      name: 'Cozy Standard Room',
-      description: 'Comfortable room perfect for your desert getaway',
-      price: '$129',
-      image: 'https://images.unsplash.com/photo-1566665797739-1674de7a421a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      features: ['Queen Bed', 'Mountain View', 'Work Desk', 'Coffee Maker']
+      name: 'Standard Double Queen Room',
+      description: '',
+      price: '',
+      image: 'https://h-img3.cloudbeds.com/uploads/309508/pxl_20231227_200713462_featured~~658d81b94f33b.jpg',
+      features: ['2 Queen Beds']
     },
     {
-      name: 'Family Suite',
-      description: 'Perfect for families with connecting rooms',
-      price: '$249',
-      image: 'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      features: ['2 Bedrooms', 'Living Area', 'Kitchen', 'Patio']
+      name: 'Pet Friendly Double Queen',
+      description: '',
+      price: '',
+      image: 'https://h-img3.cloudbeds.com/uploads/309508/img_20220103_185518762_featured~~67b55fcea87f7.jpg',
+      features: ['2 Queen Beds', 'Pet Friendly']
+    },
+    {
+      name: 'Kitchenette Family Room',
+      description: '',
+      price: '',
+      image: 'https://h-img2.cloudbeds.com/uploads/309508/pxl_20231227_201325765_featured~~658d82d49d1b1.jpg',
+      features: ['2 Queen Beds', 'Kitchen']
     }
   ];
 
   const testimonials = [
     {
-      name: 'Sarah Johnson',
+      name: 'Crystal Monsivais Garcia-Alba',
       rating: 5,
-      text: 'Absolutely stunning views and the most comfortable bed I\'ve ever slept in. The staff was incredibly friendly!',
-      location: 'New York, NY'
+      text: 'My husband and I stayed here for a couple nights, it was really nice. The guy at the front was very attentive, very nice and welcoming. The location was also very calm, easy to find and felt very safe. I was worried at first because it is a small town lol but it did feel very friendly and welcoming. My husband and will be going back in February and with be staying here. The only thing I do have to say is that our security deposit was released a couple days late but as soon as I called, they released it and explained that it was a system error they’re working to fix. The rooms were clean, organized and smelled good! Overall a 9.5/10 experience!',
+      location: 'Salina, UT'
     },
     {
       name: 'Michael Chen',
@@ -72,12 +97,12 @@ const Home: React.FC = () => {
             transition={{ duration: 0.8 }}
           >
             <h1>Welcome to High Desert Inn</h1>
-            <p>Experience luxury and adventure in the heart of the desert. Where comfort meets breathtaking landscapes and unforgettable memories await.</p>
+            <p>We offer numerous amenities and services to make your stay at the High Desert Inn a pleasure. We’re dedicated to blending comfort and convenience to provide you a relaxing, serene stay.   Featuring clean and comfy accommodations and an attentive staff, we're sure you’ll have a pleasant experience here. Thank you for the opportunity to serve you, as our guests.</p>
             <div className="hero-buttons">
-              <Link to="/book-now" className="btn btn-primary">
+              <button onClick={handleDirectBooking} className="btn btn-primary">
                 Book Your Stay
                 <ArrowRight size={20} />
-              </Link>
+              </button>
               <Link to="/amenities" className="btn btn-secondary">
                 Explore Amenities
               </Link>
@@ -100,14 +125,14 @@ const Home: React.FC = () => {
               <Users size={24} />
               <div>
                 <h3>50+ Rooms</h3>
-                <p>Comfortable Accommodations</p>
+                <p>Clean and  Comfortable Accommodations</p>
               </div>
             </div>
             <div className="stat-item">
               <Star size={24} />
               <div>
                 <h3>4.8/5</h3>
-                <p>Guest Rating</p>
+                <p>183 Reviews</p>
               </div>
             </div>
           </motion.div>
@@ -181,9 +206,9 @@ const Home: React.FC = () => {
                       <span key={featureIndex} className="feature-tag">{feature}</span>
                     ))}
                   </div>
-                  <Link to="/book-now" className="btn btn-primary">
+                  <button onClick={handleDirectBooking} className="btn btn-primary">
                     Book Now
-                  </Link>
+                  </button>
                 </div>
               </motion.div>
             ))}
@@ -239,10 +264,10 @@ const Home: React.FC = () => {
           >
             <h2>Ready for Your Desert Adventure?</h2>
             <p>Book your stay today and experience the magic of the High Desert Inn.</p>
-            <Link to="/book-now" className="btn btn-primary">
+            <button onClick={handleDirectBooking} className="btn btn-primary">
               Book Your Stay Now
               <ArrowRight size={20} />
-            </Link>
+            </button>
           </motion.div>
         </div>
       </section>

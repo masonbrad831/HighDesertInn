@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Phone, Mail, MapPin, Clock, Send, CheckCircle } from 'lucide-react';
+import emailjs from 'emailjs-com';
 import './Contact.css';
 
 const Contact: React.FC = () => {
@@ -12,8 +13,11 @@ const Contact: React.FC = () => {
     message: ''
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -21,44 +25,66 @@ const Contact: React.FC = () => {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log('Contact form submitted:', formData);
-    setIsSubmitted(true);
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      subject: '',
-      message: ''
-    });
+    setIsLoading(true);
+
+    const templateParams = {
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      subject: formData.subject,
+      message: formData.message,
+    };
+
+    try {
+      await emailjs.send(
+        'service_m4h1rjr',           // Your EmailJS service ID
+        'template_wbo7gjs',          // Your EmailJS template ID
+        templateParams,
+        'FCX7iTsF-QhpMYg8l'         // Your EmailJS public key
+      );
+
+      setIsSubmitted(true);
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        subject: '',
+        message: ''
+      });
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      alert('Sorry, there was an error sending your message. Please try again later.');
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const contactInfo = [
     {
       icon: <Phone size={24} />,
       title: 'Phone',
-      details: ['(555) 123-4567', '(555) 123-4568'],
+      details: ['(435) 529-2120'],
       description: 'Call us anytime'
     },
     {
       icon: <Mail size={24} />,
       title: 'Email',
-      details: ['info@highdesertinn.com', 'bookings@highdesertinn.com'],
-      description: 'We\'ll respond within 24 hours'
+      details: ['info@highdesertinns.com'],
+      description: "We'll respond within 24 hours"
     },
     {
       icon: <MapPin size={24} />,
       title: 'Address',
-      details: ['123 Desert Valley Road', 'Desert Valley, CA 92345'],
+      details: ['60 North State Street', 'Salina, UT 84654'],
       description: 'Visit us anytime'
     },
     {
       icon: <Clock size={24} />,
       title: 'Hours',
-      details: ['Check-in: 3:00 PM', 'Check-out: 11:00 AM'],
-      description: '24/7 Front Desk'
+      details: ['Check-in: 3:00 PM', 'Check-out: 11:00 AM', '⠀', 'Front Desk:', '8:00 AM - 11:00 AM', '3:00 PM - 5:00 PM'],
+      description: ['']
     }
   ];
 
@@ -94,7 +120,7 @@ const Contact: React.FC = () => {
             <h2>Get in Touch</h2>
             <p>We're here to help make your desert getaway perfect.</p>
           </motion.div>
-          
+
           <div className="contact-info-grid">
             {contactInfo.map((info, index) => (
               <motion.div
@@ -105,16 +131,18 @@ const Contact: React.FC = () => {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 whileHover={{ y: -5 }}
               >
-                <div className="contact-icon">
-                  {info.icon}
-                </div>
+                <div className="contact-icon">{info.icon}</div>
                 <h3>{info.title}</h3>
                 <div className="contact-details">
                   {info.details.map((detail, detailIndex) => (
                     <p key={detailIndex}>{detail}</p>
                   ))}
                 </div>
-                <p className="contact-description">{info.description}</p>
+                <div className="contact-description">
+                  {Array.isArray(info.description)
+                    ? info.description.map((line, i) => <p key={i}>{line}</p>)
+                    : info.description && <p>{info.description}</p>}
+                </div>
               </motion.div>
             ))}
           </div>
@@ -169,7 +197,7 @@ const Contact: React.FC = () => {
                       />
                     </div>
                   </div>
-                  
+
                   <div className="form-row">
                     <div className="form-group">
                       <label htmlFor="phone">Phone Number</label>
@@ -199,7 +227,7 @@ const Contact: React.FC = () => {
                       </select>
                     </div>
                   </div>
-                  
+
                   <div className="form-group">
                     <label htmlFor="message">Message *</label>
                     <textarea
@@ -211,14 +239,15 @@ const Contact: React.FC = () => {
                       required
                     ></textarea>
                   </div>
-                  
+
                   <motion.button
                     type="submit"
                     className="btn btn-primary submit-btn"
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
+                    disabled={isLoading}
                   >
-                    Send Message
+                    {isLoading ? 'Sending...' : 'Send Message'}
                     <Send size={20} />
                   </motion.button>
                 </form>
@@ -234,7 +263,7 @@ const Contact: React.FC = () => {
               <h3>Find Us</h3>
               <div className="map-container">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3257.1234567890123!2d-116.12345678901234!3d34.12345678901234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzTCsDA3JzM0LjQiTiAxMTbCsDA3JzM0LjQiVw!5e0!3m2!1sen!2sus!4v1234567890123"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d802.5371047382866!2d-111.85950969020769!3d38.95821167116912!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x874b77307ff70c13%3A0x294abb05b2a546e4!2sHigh%20Desert%20Inn!5e1!3m2!1sen!2sus!4v1753865785556!5m2!1sen!2sus"
                   width="100%"
                   height="400"
                   style={{ border: 0 }}
@@ -245,8 +274,16 @@ const Contact: React.FC = () => {
               </div>
               <div className="map-info">
                 <h4>High Desert Inn</h4>
-                <p>123 Desert Valley Road<br />Desert Valley, CA 92345</p>
-                <p>Located in the heart of the desert, just minutes from major attractions and hiking trails.</p>
+                <p>
+                  60 North State Street
+                  <br />
+                  Salina, UT 84654
+                </p>
+                <p>
+                  Nestled in the heart of scenic Salina, the High Desert Inn offers comfortable
+                  accommodations just minutes away from local attractions, hiking trails, and the
+                  stunning Utah desert landscape—perfect for your peaceful getaway.
+                </p>
               </div>
             </motion.div>
           </div>
@@ -265,7 +302,7 @@ const Contact: React.FC = () => {
             <h2>Frequently Asked Questions</h2>
             <p>Find answers to common questions about your stay at High Desert Inn.</p>
           </motion.div>
-          
+
           <div className="faq-grid">
             <motion.div
               className="faq-item"
@@ -274,9 +311,12 @@ const Contact: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.1 }}
             >
               <h3>What are your check-in and check-out times?</h3>
-              <p>Check-in is available from 3:00 PM, and check-out is until 11:00 AM. Early check-in and late check-out may be available upon request.</p>
+              <p>
+                Check-in is available from 3:00 PM, and check-out is until 11:00 AM. Early check-in
+                and late check-out may be available upon request.
+              </p>
             </motion.div>
-            
+
             <motion.div
               className="faq-item"
               initial={{ opacity: 0, y: 30 }}
@@ -286,7 +326,7 @@ const Contact: React.FC = () => {
               <h3>Do you offer free cancellation?</h3>
               <p>Yes, we offer free cancellation up to 24 hours before your scheduled arrival date.</p>
             </motion.div>
-            
+
             <motion.div
               className="faq-item"
               initial={{ opacity: 0, y: 30 }}
@@ -294,9 +334,12 @@ const Contact: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
             >
               <h3>Is parking available?</h3>
-              <p>Yes, we offer complimentary parking for all guests. Secure parking is available on-site.</p>
+              <p>
+                Yes, we offer complimentary parking for all guests. Secure parking with 24/7
+                surveillance is available on-site.
+              </p>
             </motion.div>
-            
+
             <motion.div
               className="faq-item"
               initial={{ opacity: 0, y: 30 }}
@@ -304,7 +347,10 @@ const Contact: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.4 }}
             >
               <h3>Are pets allowed?</h3>
-              <p>Yes, we are pet-friendly! We offer special amenities and services for pets and their owners.</p>
+              <p>
+                Yes, we are pet-friendly! We offer special amenities and services for pets and their
+                owners.
+              </p>
             </motion.div>
           </div>
         </div>
@@ -313,4 +359,4 @@ const Contact: React.FC = () => {
   );
 };
 
-export default Contact; 
+export default Contact;

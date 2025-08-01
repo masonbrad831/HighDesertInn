@@ -1,5 +1,5 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -12,11 +12,34 @@ import BookNow from './pages/BookNow';
 import Contact from './pages/Contact';
 import './App.css';
 
+// Component to handle dynamic titles
+const RouteChangeHandler = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    const pathTitleMap: Record<string, string> = {
+      '/': 'High Desert Inn – Home',
+      '/about': 'About Us – High Desert Inn',
+      '/amenities': 'Amenities – High Desert Inn',
+      '/reviews': 'Reviews – High Desert Inn',
+      '/attractions': 'Nearby Attractions – High Desert Inn',
+      '/book-now': 'Book Now – High Desert Inn',
+      '/contact': 'Contact Us – High Desert Inn',
+    };
+
+    const title = pathTitleMap[location.pathname] || 'High Desert Inn';
+    document.title = title;
+  }, [location]);
+
+  return null;
+};
+
 function App() {
   return (
     <Router>
       <div className="App">
         <Navbar />
+        <RouteChangeHandler />
         <AnimatePresence mode="wait">
           <Routes>
             <Route path="/" element={<Home />} />
