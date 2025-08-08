@@ -124,7 +124,7 @@ const Home: React.FC = () => {
             <div className="stat-item">
               <Users size={24} />
               <div>
-                <h3>50+ Rooms</h3>
+                <h3>30+ Rooms</h3>
                 <p>Clean and  Comfortable Accommodations</p>
               </div>
             </div>
