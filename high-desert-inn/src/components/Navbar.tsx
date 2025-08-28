@@ -52,7 +52,7 @@ const Navbar: React.FC = () => {
             />
             <div className="brand-text-container">
               <span className="brand-text">High Desert Inn</span>
-              <span className="brand-subtitle">Where Comfort Meets Adventure</span>
+              <span className="brand-subtitle">Placeholder</span>
             </div>
           </motion.div>
         </Link>

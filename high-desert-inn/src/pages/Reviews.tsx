@@ -9,57 +9,57 @@ const Reviews: React.FC = () => {
   const reviews = [
     {
       id: 1,
-      name: 'Sarah Johnson',
-      location: 'New York, NY',
+      name: 'First Last',
+      location: '',
       rating: 5,
-      date: 'March 2024',
-      text: 'Absolutely stunning views and the most comfortable bed I\'ve ever slept in. The staff was incredibly friendly and the breakfast was delicious. Will definitely return!',
-      image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'
+      date: 'July 2024',
+      text: 'Placeholder Text',
+      image: ''
     },
     {
-      id: 2,
-      name: 'Michael Chen',
-      location: 'Los Angeles, CA',
+      id: 1,
+      name: 'First Last',
+      location: '',
       rating: 5,
-      date: 'February 2024',
-      text: 'Perfect location for exploring the desert. The breakfast was amazing and the rooms were spotless. The sunset views from our balcony were breathtaking.',
-      image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'
+      date: 'July 2024',
+      text: 'Placeholder Text',
+      image: ''
     },
     {
-      id: 3,
-      name: 'Emily Rodriguez',
-      location: 'Phoenix, AZ',
+      id: 1,
+      name: 'First Last',
+      location: '',
       rating: 5,
-      date: 'January 2024',
-      text: 'We loved our stay! The sunset views from our balcony were breathtaking. The staff went above and beyond to make our anniversary special. Highly recommend!',
-      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'
+      date: 'July 2024',
+      text: 'Placeholder Text',
+      image: ''
     },
     {
-      id: 4,
-      name: 'David Thompson',
-      location: 'Seattle, WA',
+      id: 1,
+      name: 'First Last',
+      location: '',
       rating: 5,
-      date: 'December 2023',
-      text: 'The desert views are absolutely spectacular. The room was immaculate and the service was top-notch. Can\'t wait to come back!',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'
+      date: 'July 2024',
+      text: 'Placeholder Text',
+      image: ''
     },
     {
-      id: 5,
-      name: 'Lisa Wang',
-      location: 'San Francisco, CA',
+      id: 1,
+      name: 'First Last',
+      location: '',
       rating: 5,
-      date: 'November 2023',
-      text: 'What a magical place! The stargazing deck was incredible and the staff was so welcoming. The local art throughout the property added such a special touch.',
-      image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'
+      date: 'July 2024',
+      text: 'Placeholder Text',
+      image: ''
     },
     {
-      id: 6,
-      name: 'Robert Martinez',
-      location: 'Denver, CO',
+      id: 1,
+      name: 'First Last',
+      location: '',
       rating: 5,
-      date: 'October 2023',
-      text: 'The perfect desert getaway. The pool was refreshing, the food was delicious, and the views were unforgettable. Already planning our next visit!',
-      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'
+      date: 'July 2024',
+      text: 'Placeholder Text',
+      image: ''
     }
   ];
 
@@ -173,7 +173,6 @@ const Reviews: React.FC = () => {
               >
                 <div className="review-header">
                   <div className="review-author">
-                    <img src={review.image} alt={review.name} />
                     <div>
                       <h4>{review.name}</h4>
                       <p>{review.location}</p>

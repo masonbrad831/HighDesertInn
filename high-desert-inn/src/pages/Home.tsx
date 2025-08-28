@@ -63,22 +63,22 @@ const Home: React.FC = () => {
 
   const testimonials = [
     {
-      name: 'Crystal Monsivais Garcia-Alba',
+      name: 'First Last',
       rating: 5,
-      text: 'My husband and I stayed here for a couple nights, it was really nice. The guy at the front was very attentive, very nice and welcoming. The location was also very calm, easy to find and felt very safe. I was worried at first because it is a small town lol but it did feel very friendly and welcoming. My husband and will be going back in February and with be staying here. The only thing I do have to say is that our security deposit was released a couple days late but as soon as I called, they released it and explained that it was a system error they’re working to fix. The rooms were clean, organized and smelled good! Overall a 9.5/10 experience!',
-      location: 'Salina, UT'
+      text: 'Placeholder',
+      location: ''
     },
     {
-      name: 'Michael Chen',
+      name: 'First Last',
       rating: 5,
-      text: 'Perfect location for exploring the desert. The breakfast was amazing and the rooms were spotless.',
-      location: 'Los Angeles, CA'
+      text: 'Placeholder',
+      location: ''
     },
     {
-      name: 'Emily Rodriguez',
+      name: 'First Last',
       rating: 5,
-      text: 'We loved our stay! The sunset views from our balcony were breathtaking. Highly recommend!',
-      location: 'Phoenix, AZ'
+      text: 'Placeholder',
+      location: ''
     }
   ];
 

@@ -52,19 +52,19 @@ const Amenities: React.FC = () => {
 
   const specialFeatures = [
     {
-      title: 'Desert View Balconies',
-      description: 'Every room features a private balcony with panoramic desert views',
+      title: 'Placeholder Title',
+      description: 'PlaceHolder Description',
       image: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
     },
     {
-      title: 'Local Art Gallery',
-      description: 'Showcasing works from talented local artists throughout the property',
-      image: 'https://images.unsplash.com/photo-1541961017774-22349e4a1262?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+      title: 'Placeholder Title',
+      description: 'PlaceHolder Description',
+      image: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
     },
     {
-      title: 'Stargazing Deck',
-      description: 'Experience the breathtaking desert night sky from our rooftop deck',
-      image: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
+      title: 'Placeholder Title',
+      description: 'PlaceHolder Description',
+      image: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80'
     }
   ];
 
@@ -194,8 +194,8 @@ const Amenities: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.1 }}
               whileHover={{ y: -5 }}
             >
-              <h3>Event Planning</h3>
-              <p>From intimate gatherings to corporate events, our team can help plan and execute your perfect desert celebration.</p>
+              <h3>Placeholder</h3>
+              <p>Placeholder</p>
             </motion.div>
             
             <motion.div
@@ -205,8 +205,8 @@ const Amenities: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.2 }}
               whileHover={{ y: -5 }}
             >
-              <h3>Guided Tours</h3>
-              <p>Explore the desert with our knowledgeable guides who can show you hidden gems and share local insights.</p>
+              <h3>Placeholder</h3>
+              <p>Placeholder</p>
             </motion.div>
             
             <motion.div
@@ -216,8 +216,8 @@ const Amenities: React.FC = () => {
               transition={{ duration: 0.6, delay: 0.3 }}
               whileHover={{ y: -5 }}
             >
-              <h3>Pet-Friendly Accommodations</h3>
-              <p>Your furry friends are welcome! We offer special amenities and services for pets and their owners.</p>
+              <h3>Placeholder</h3>
+              <p>Placeholder</p>
             </motion.div>
           </div>
         </div>

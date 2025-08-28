@@ -17,6 +17,10 @@ const RouteChangeHandler = () => {
   const location = useLocation();
 
   useEffect(() => {
+    // Scroll to top when path changes
+    window.scrollTo(0, 0);
+
+    // Handle page titles
     const pathTitleMap: Record<string, string> = {
       '/': 'High Desert Inn – Home',
       '/about': 'About Us – High Desert Inn',
