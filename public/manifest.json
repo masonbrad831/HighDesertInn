@@ -18,7 +18,7 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": "/HighDesertInn/",
+  "start_url": ".",
   "display": "standalone",
   "theme_color": "#1E3A8A",
   "background_color": "#ffffff"
