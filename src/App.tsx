@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -12,15 +12,15 @@ import BookNow from './pages/BookNow';
 import Contact from './pages/Contact';
 import './App.css';
 
-// Component to handle dynamic titles
-const RouteChangeHandler = () => {
+// Component to handle dynamic titles and scroll to top
+const RouteChangeHandler: React.FC = () => {
   const location = useLocation();
 
   useEffect(() => {
-    // Scroll to top when path changes
+    // Scroll to top on route change
     window.scrollTo(0, 0);
 
-    // Handle page titles
+    // Map paths to titles
     const pathTitleMap: Record<string, string> = {
       '/': 'High Desert Inn – Home',
       '/about': 'About Us – High Desert Inn',
@@ -38,9 +38,9 @@ const RouteChangeHandler = () => {
   return null;
 };
 
-function App() {
+const App: React.FC = () => {
   return (
-    <Router>
+    <Router basename="/HighDesertInn">
       <div className="App">
         <Navbar />
         <RouteChangeHandler />
@@ -53,12 +53,14 @@ function App() {
             <Route path="/attractions" element={<Attractions />} />
             <Route path="/book-now" element={<BookNow />} />
             <Route path="/contact" element={<Contact />} />
+            {/* Optional: catch-all route to redirect unknown paths to home */}
+            <Route path="*" element={<Home />} />
           </Routes>
         </AnimatePresence>
         <Footer />
       </div>
     </Router>
   );
-}
+};
 
 export default App;
