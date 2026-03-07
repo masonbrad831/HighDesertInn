@@ -20,21 +20,6 @@ const Amenities: React.FC = () => {
       ]
     },
     {
-      category: 'Transportation',
-      items: [
-        { icon: <Car size={24} />, name: 'Free Parking', description: 'Secure parking for all guests' },
-        { icon: <Users size={24} />, name: 'Shuttle Service', description: 'Complimentary shuttle to nearby attractions' },
-      ]
-    },
-    {
-      category: 'Wellness',
-      items: [
-        { icon: <Waves size={24} />, name: 'Swimming Pool', description: 'Heated pool with desert views' },
-        { icon: <Heart size={24} />, name: 'Spa Services', description: 'Relaxing treatments and massages' },
-        { icon: <Dumbbell size={24} />, name: 'Fitness Center', description: '24/7 access to modern equipment' },
-      ]
-    },
-    {
       category: 'Comfort',
       items: [
         { icon: <AirVent size={24} />, name: 'Climate Control', description: 'Individual temperature control in each room' },
