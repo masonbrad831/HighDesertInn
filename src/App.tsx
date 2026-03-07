@@ -15,7 +15,6 @@ import Contact from './pages/Contact';
 
 import './App.css';
 
-// Scroll to top and dynamic page titles
 const RouteChangeHandler: React.FC = () => {
   const location = useLocation();
 
@@ -23,7 +22,7 @@ const RouteChangeHandler: React.FC = () => {
     window.scrollTo(0, 0);
 
     const titles: Record<string, string> = {
-      '/': 'High Desert Inn – Home',
+      '/': 'Home - High Desert Inn',
       '/about': 'About Us – High Desert Inn',
       '/amenities': 'Amenities – High Desert Inn',
       '/reviews': 'Reviews – High Desert Inn',
