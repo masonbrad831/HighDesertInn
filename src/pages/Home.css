@@ -106,12 +106,14 @@
   font-size: 1.5rem;
   margin: 0;
   font-weight: 700;
+  text-align: left;
 }
 
 .stat-item p {
   color: rgba(255, 255, 255, 0.8);
   margin: 0;
   font-size: 0.9rem;
+  text-align: left;
 }
 
 /* Amenities Section */
